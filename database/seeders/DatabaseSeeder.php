@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         // Optionnel : Création d'un compte client pour tes tests
         User::updateOrCreate(
-            ['email' => 'tambon.djebarlen@gmail.com'],
+            ['email' => 'djebarlen.tambon@gmail.com'],
             [
                 'name' => 'Djebarlen TAMBON',
                 'phone' => '06 93 05 70 66',
