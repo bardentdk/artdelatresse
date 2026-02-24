@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs sur-mesure */
+  --color-brand-bg: #fef6ea;
+  --color-brand-surface: #ffffff;
+  --color-brand-text: #2d241e; /* Marron très sombre pour la lisibilité */
+  --color-brand-accent: #c08257; /* Couleur d'accentuation élégante (ex: boutons) */
+  
+  /* Polices */
+  --font-season: 'The Season', serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+/* Importation de The Season (à adapter selon le format de ton fichier) */
+@font-face {
+    font-family: 'The Season';
+    src: url('/fonts/TheSeason-Bold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    @apply bg-brand-bg text-brand-text font-inter antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    @apply font-season;
+}
+
+/* Surcharge de la configuration de vue3-toastify pour l'adapter au design */
+:root {
+  --toastify-font-family: 'Inter', sans-serif;
+  --toastify-color-light: #ffffff;
+  --toastify-text-color-light: #2d241e;
+}
