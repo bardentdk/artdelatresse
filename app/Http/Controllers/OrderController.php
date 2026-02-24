@@ -78,6 +78,7 @@ class OrderController extends Controller
     // 2. Traite le choix, crée la commande en "pending" et redirige vers Stripe
     public function checkout(Request $request)
     {
+        
         $validated = $request->validate([
             'service_id' => 'required|exists:services,id',
             'availability_id' => 'required|exists:availabilities,id',
@@ -107,9 +108,9 @@ class OrderController extends Controller
 
         $availability->update(['is_booked' => true]);
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe::setApiKey(config('services.stripe.secret') ?? env('STRIPE_SECRET'));
 
-        $checkout_session = \Stripe\Checkout\Session::create([
+        $checkout_session = Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => auth()->user()->email,
             
